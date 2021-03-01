@@ -6,7 +6,7 @@ A solitaire card playing game for one player, based on the version available at 
 - [Node.js](https://nodejs.org/en/)
 - A JS package manager (e.g. [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/))
 - [Webpack](https://webpack.js.org/)
-- A webserver (e.g. Apache via [XAMPP](https://www.apachefriends.org/index.html))
+- A webserver (e.g. NGINX or node.js-based [http-server](https://github.com/http-party/http-server)))
 
 ## Setup 
 1. Checkout the repository.
