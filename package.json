@@ -20,7 +20,6 @@
     "jshint": "^2.12.0",
     "jshint-loader": "^0.8.3",
     "style-loader": "^0.13.1",
-    "uglify-js-plugin": "0.0.6",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
