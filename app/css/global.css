@@ -1,0 +1,118 @@
+
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	min-width: 360px;
+}
+
+.wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	-ms-flex-direction: column;
+}
+
+@media (max-width: 767px) {
+	.wrapper.container-fluid {
+		min-width: 643px;
+	}
+}
+
+@media (max-width: 525px) {
+	.wrapper.container-fluid {
+		min-width: 463px;
+	}
+}
+
+* {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #2E2E2E;
+}
+
+.btn-default, .btn-default:hover {
+	border-color: transparent;
+}
+
+h1 {
+	font-size: 28px;
+	line-height: 40px;
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 40px;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 40px;
+}
+
+h4 {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+h5 {
+	font-size: 12px;
+	line-height: 20px;
+}
+
+h6 {
+	font-size: 10px;
+	line-height: 20px;
+}
+
+.center {
+	text-align: center;
+}
+
+.subscriptedCharacter {
+	vertical-align: sub;
+	font-size: 10px;
+}
+
+.underlined {
+	text-decoration: underline;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.noty_message .noty_text {
+	font-weight: normal;
+}
+
+.infoIcon {
+	cursor: pointer;
+}
+
+.infoIcon.tooltipLevel, .infoIcon.tooltipSpeed{
+	margin-left: 15px;
+	width: 20px;
+}
+
+.fw-normal {
+	font-weight: normal;
+}
+
+input.align_vertical_input {
+	vertical-align: middle;
+	margin-top: -2px;
+}
+
+/* Hack to prevent tooltipster tooltips from bubbling click events to the elements behind the tooltip: */
+.tooltipster-base {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+/* Show X button to close a noty not only on hover: */
+.noty_close {
+	opacity: 100 !important;
+	display: block !important;
+	top: 6px !important;
+	right: 6px !important;
+}

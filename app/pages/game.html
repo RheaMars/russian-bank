@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../css/external/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/external/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/external/sweetalert2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/external/jquery-ui.slider.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/external/tooltipster.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/external/tooltipster-sideTip-noir.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert2_custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.slider_custom.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/playingfield.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/footer.css"/>
+
+    <link rel="icon" href="../img/gameLogo.png">
+
+</head>
+<body>
+
+<div class="wrapper container-fluid">
+    <header class="row">
+        <div class="col-sm-12 center">
+            <span id="headlineWrapper">
+                <img src="../img/loader.gif" class="spinnerLoader"/>
+                <img id="logoImage" style="display:none" src="../img/gameLogo.png">
+                <h1 id="gameHeadline" style="display:none" data-i18n="[html]russianBank"></h1>
+            </span>
+            <span id="selectLanguageWrapper" style="display:none">
+                <img id="flagImage" src="../img/earth.png">
+                <select name="selectLanguage" id="selectLanguage">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+					<option value="fr">Français</option>
+                </select>
+            </span>
+        </div>
+    </header>
+
+    <main class="row" id="content">
+
+        <div class="content-wrapper" style="display:none">
+
+            <img src="../img/pauseBig.png" class="pauseIconBig"/>
+
+            <span class="playingfield">
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span class="playerBoard PLAYER_B playerBoardInactive"
+                              style="background-color: #E5E5E5;margin-top:20px;">
+                            <img src="../img/robot.png">
+                        </span>
+                        <div class="progressbar-wrapper">
+                            <div data-i18n="[title]toolTipNumberOfCards" class="progressbar PLAYER_B"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="WASTE_PILE_PLAYER_B" class="pilePanel wp"></span>
+                        <span id="RESERVE_PILE_PLAYER_B" class="pilePanel rp"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="HOUSE_PILE_LEFT_1" class="pilePanel hp"></span>
+                        <span id="CENTER_PILE_LEFT_1" class="pilePanel cp"></span>
+                        <span id="CENTER_PILE_RIGHT_1" class="pilePanel cp"></span>
+                        <span id="HOUSE_PILE_RIGHT_1" class="pilePanel hp"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="HOUSE_PILE_LEFT_2" class="pilePanel hp"></span>
+                        <span id="CENTER_PILE_LEFT_2" class="pilePanel cp"></span>
+                        <span id="CENTER_PILE_RIGHT_2" class="pilePanel cp"></span>
+                        <span id="HOUSE_PILE_RIGHT_2" class="pilePanel hp"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="HOUSE_PILE_LEFT_3" class="pilePanel hp"></span>
+                        <span id="CENTER_PILE_LEFT_3" class="pilePanel cp"></span>
+                        <span id="CENTER_PILE_RIGHT_3" class="pilePanel cp"></span>
+                        <span id="HOUSE_PILE_RIGHT_3" class="pilePanel hp"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="HOUSE_PILE_LEFT_4" class="pilePanel hp"></span>
+                        <span id="CENTER_PILE_LEFT_4" class="pilePanel cp"></span>
+                        <span id="CENTER_PILE_RIGHT_4" class="pilePanel cp"></span>
+                        <span id="HOUSE_PILE_RIGHT_4" class="pilePanel hp"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span id="RESERVE_PILE_PLAYER_A" class="pilePanel rp"></span>
+                        <a href="#" id="changeWastePileAndReservePileIcon" style="display:none;">
+                            <img src="../img/arrow-left-to-right.png"/>
+                        </a>
+                        <span id="WASTE_PILE_PLAYER_A" class="pilePanel wp"></span>
+
+                        <span class="knockButtonPanel" data-i18n="[title]toolTipKnockButton">
+                            <span class="knockButton" data-i18n="[html]knockButtonText"></span>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 center">
+                        <span class="playerBoard PLAYER_A playerBoardActive" style="background-color: #f7dd4c">
+                            <img src="../img/user.png">
+                        </span>
+                        <div class="progressbar-wrapper">
+                            <div data-i18n="[title]toolTipNumberOfCards" class="progressbar PLAYER_A"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </span>
+
+            <div class="row center" id="settingsPanel">
+
+                <div class="col-xs-12 col-sm-6 settingsLeft">
+
+                    <div class="row">
+                        <div class="checkbox">
+                            <label id="labelTutorial"><input type="checkbox" id="checkboxTutorial" value=""><span
+                                        data-i18n="[html]tutorial"/></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="button" class="btn btn-md btn-primary newGameButton interruptGameplayAction"
+                                data-i18n="[html]newGame"></button>
+                    </div>
+
+                    <div class="row mt-10">
+                        <button class="btn btn-default pauseGameButton toPause">
+                            <img src="../img/pause.png" data-i18n="[title]pauseGame" width="18"/>
+                        </button>
+                        <button type="button" class="btn btn-md btn-default statisticsButton interruptGameplayAction"
+                                data-i18n="[html]statistics"></button>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-6 settingsRight">
+
+                    <div class="row levelRow">
+                        <label data-i18n="[html]levelOfDifficulty"></label>
+                        <select name="selectDifficultyOfGame" id="selectDifficultyOfGame">
+                            <option value="0.0" data-i18n="[html]levelBeginner"></option>
+                            <option value="0.25" data-i18n="[html]levelEasy"></option>
+                            <option value="0.5" data-i18n="[html]levelNormal" selected></option>
+                            <option value="0.75" data-i18n="[html]levelAdvanced"></option>
+                            <option value="1.0" data-i18n="[html]levelProfessional"></option>
+                        </select>
+                        <img src="../img/help.png" class="infoIcon tooltipsterTooltip tooltipLevel"
+                             data-i18n="[title]tooltipLevel"/>
+                    </div>
+
+                    <div class="row speedRow">
+                        <label data-i18n="[html]speedSlider"></label>
+                        <div class="speedSlider">
+                            <div id="speedSliderText" class="ui-slider-handle"></div>
+                        </div>
+                        <img src="../img/help.png" class="infoIcon tooltipsterTooltip tooltipSpeed"
+                             data-i18n="[title]tooltipSpeed"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="row">
+        <div class="footer-wrapper" style="opacity:0">
+            <span class="footerColumnLeft"></span>
+            <span class="footerColumnCenter"></span>
+            <span class="footerColumnRight"></span>
+        </div>
+    </footer>
+
+</div>
+
+<script type="text/javascript" src="../js/dist/app.js" charset="utf-8"></script>
+
+</body>
+</html>

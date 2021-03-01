@@ -1,0 +1,78 @@
+header {
+    height: 48px;
+    background: #F7BE81;
+    background: #F7BE81 -webkit-gradient(radial, center center, 0, center center, 600, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.2)));
+    background: #F7BE81 -webkit-radial-gradient(circle, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.2)));
+    background: -moz-radial-gradient(#F7BE81, #C59867);
+    background: -ms-radial-gradient(circle, #F7BE81, #C59867);
+
+    -webkit-box-shadow:inset 0px 0px 0px 1px #2E2E2E;
+    -moz-box-shadow:inset 0px 0px 0px 1px #2E2E2E;
+    box-shadow:inset 0px 0px 0px 1px #2E2E2E;
+}
+header h1 {
+    font-size: 23px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-weight: normal;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: -5px;
+}
+
+header #gameHeadline {
+    display: inline-block;
+}
+
+header #selectLanguageWrapper {
+    position: absolute;
+    right: 10px;
+    margin-top: 15px;
+}
+
+
+header #flagImage {
+    width: 16px;
+    height: 16px;
+}
+
+header #logoImage, header .spinnerLoader {
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+
+    header {
+        height: 58px;
+        min-height: 58px;
+    }
+
+    header #logoImage, header .spinnerLoader {
+        width: 48px;
+        height: 48px;
+        margin-top: 4px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header #flagImage {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    #headlineWrapper {
+        float: left;
+    }
+}

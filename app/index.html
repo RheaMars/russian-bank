@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+<script type="text/javascript">
+
+    const getUrl = window.location;
+    const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+    var targetPage = baseUrl + "/app/pages/game.html";
+
+    window.location = targetPage;
+
+</script>
+</body>
+</html>
+

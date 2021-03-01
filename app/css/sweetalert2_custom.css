@@ -1,0 +1,29 @@
+.swal2-title {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.swal2-modal.fontsize-14 .swal2-content {
+    font-size: 14px;
+}
+
+.swal2-modal.fontsize-13 .swal2-content {
+    font-size: 13px;
+}
+
+.swal2-modal.swat-left .swal2-content {
+    text-align: left;
+}
+
+.swal2-modal hr {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.swal2-validationerror div {
+    font-size: 14px;
+    color: #EA7D7D;
+}
+
+.swal2-modal.line-height-20-px .swal2-content{
+    line-height: 20px;
+}

@@ -1,0 +1,64 @@
+{
+  "name": "russian-bank",
+  "version": "1.0.0",
+  "description": "a card playing game",
+  "main": "webpack.config.js",
+  "repository": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.26.0",
+    "eslint": "^4.19.0",
+    "eslint-loader": "^2.0.0",
+    "jshint": "^2.12.0",
+    "jshint-loader": "^0.8.3",
+    "style-loader": "^0.13.1",
+    "uglify-js-plugin": "0.0.6",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "babel-plugin-transform-for-of-as-array": "^1.1.1",
+    "babel-polyfill": "^6.26.0",
+    "bootstrap": "^3.4.1",
+    "enumify": "^1.0.4",
+    "i18next": "^4.2.0",
+    "jquery": "^3.5.1",
+    "jquery-i18next": "^1.2.0",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-touch-punch": "^0.2.3",
+    "kute.js": "^1.5.98",
+    "notifyjs": "^2.0.3",
+    "noty": "^2.4.0",
+    "sweetalert2": "^6.6.9",
+    "tooltipster": "^4.2.6"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "rules": {
+      "semi": [
+        2,
+        "always"
+      ],
+      "no-console": 1,
+      "no-unused-vars": 1
+    }
+  }
+}
