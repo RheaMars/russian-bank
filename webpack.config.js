@@ -1,6 +1,3 @@
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
 module.exports = {
 	mode: "development",
 	entry: {
@@ -46,8 +43,5 @@ module.exports = {
 				]
 			}
 		]
-	},
-	plugins: [
-		new UglifyJsPlugin(), // Minimize the generated js file
-	]
+	}
 };
