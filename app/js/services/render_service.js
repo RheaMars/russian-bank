@@ -46,10 +46,6 @@ export function preloadImages() {
     imagesToPreload.push("../img/gameOverLost.png");
     imagesToPreload.push("../img/gameOverWon.png");
 
-    imagesToPreload.push("../img/tableauLegendDe.jpg");
-    imagesToPreload.push("../img/tableauLegendEn.jpg");
-    imagesToPreload.push("../img/tableauLegendFr.jpg");
-
     preloadImagesHelper(imagesToPreload);
 }
 
