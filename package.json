@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "a card playing game",
   "main": "webpack.config.js",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RheaMars/russian-bank"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.2",
@@ -22,9 +25,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "babel-plugin-transform-for-of-as-array": "^1.1.1",
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "^3.4.1",
     "enumify": "^1.0.4",
     "i18next": "^4.2.0",
     "jquery": "^3.5.1",
@@ -32,7 +33,6 @@
     "jquery-ui": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
     "kute.js": "^1.5.98",
-    "notifyjs": "^2.0.3",
     "noty": "^2.4.0",
     "sweetalert2": "^6.6.9",
     "tooltipster": "^4.2.6"
