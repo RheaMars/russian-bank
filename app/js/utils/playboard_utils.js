@@ -3,6 +3,7 @@ import { PileType } from '../enums/pileinformation/piletype';
 import { Card2Pile } from '../entities/card2pile';
 import { CardNumber } from '../enums/cardinformation/cardnumber';
 import { Move } from '../entities/move';
+import { Player } from '../enums/player';
 
 import * as PileUtils from './pile_utils';
 import * as CardUtils from './card_utils';
@@ -484,4 +485,64 @@ export function isIntendedMoveMandatory(intendedMove, game) {
 		}
 	}
 	return false;
+}
+
+/**
+ * Check if the AI played a card to the waste pile of the real player in the last move
+ * instead of playing it to a center pile.
+ *
+ * @returns {null} if no forgotten mandatory move can be found, else the forgotten mandatory move.
+ */
+export function getForgottenMandatoryWastePileMoveOfTheAi(game) {
+
+    let forgottenMandatoryMove = null;
+
+    const lastMove = game.getPlayboard().getMoveHistory().get(game.getPlayboard().getMoveHistory().size);
+    const wastePileOfRealPlayer = game.getPlayboard().getPlayboardMap().get(PilePosition.WASTE_PILE_PLAYER_A);
+
+    // Was the AI the player of the last move?
+    if (lastMove && lastMove.getPlayer() === Player.PLAYER_B) {
+
+        // Normally we would have to check the last move now...
+        let moveToCheck = lastMove;
+
+        // ... but if the AI just turned around a card on its reserve pile we have to check the move before the last move:
+        if (lastMove.getTargetPilePosition() === PilePosition.RESERVE_PILE_PLAYER_B
+            && lastMove.getSourcePilePosition() === PilePosition.RESERVE_PILE_PLAYER_B) {
+            let numberOfMoves = game.getPlayboard().getMoveHistory().size;
+            if (numberOfMoves >= 1) {
+                const moveBeforeLastMove = game.getPlayboard().getMoveHistory().get(numberOfMoves - 1);
+                if (moveBeforeLastMove && moveBeforeLastMove.getPlayer() === Player.PLAYER_B) {
+                    moveToCheck = moveBeforeLastMove;
+                }
+            }
+        }
+
+        // Did the AI play a card on the waste pile of the real player in the move to check?
+        if (moveToCheck.getTargetPilePosition() === wastePileOfRealPlayer.getPosition()) {
+
+            // Should the card have been played to a center pile?
+            const topCardWastePileOfRealPlayer = PileUtils.getTopCard(wastePileOfRealPlayer);
+            game.getPlayboard().getPlayboardMap().forEach(function(value, key) {
+
+                const targetPilePosition = key;
+                if (targetPilePosition.getPileType() == PileType.CENTER) {
+
+                    const targetPile = game.getPlayboard().getPlayboardMap().get(targetPilePosition);
+                    const topCardOfTargetPile = PileUtils.getTopCard(targetPile);
+
+                    if (targetPile.getCard2PileElements().length > 0
+                        && wastePileOfRealPlayer.getCard2PileElements().length > 0
+                        && CardUtils.haveEqualSuits(topCardWastePileOfRealPlayer, topCardOfTargetPile)
+                        && CardUtils.isSuccessor(topCardWastePileOfRealPlayer, topCardOfTargetPile))
+                    {
+                        forgottenMandatoryMove = new Move();
+                        forgottenMandatoryMove.setTargetPilePosition(targetPilePosition);
+                    }
+                }
+            });
+        }
+    }
+
+    return forgottenMandatoryMove;
 }

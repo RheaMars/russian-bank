@@ -369,16 +369,30 @@ export class Game {
 	onClickOfKnockHighlightedCenterPile(clickedCenterPile, playerPossiblyClickedTooLate) {
 		
 		let knockIsJustified = false;
-		
+
+		// Is move knockable based on current mandatory moves of the AI?
 		const isMoveKnockable = AiUtils.isMoveKnockable(this.getIntendedMoveOfArtificialIntelligence(), this, false);
-		
 		if (isMoveKnockable) {
 			const mandatoryMoves = PlayboardUtils.getMandatoryMoves(this, false);
-			
+
 			for (let mandatoryMove of mandatoryMoves) {
 				if (mandatoryMove.getTargetPilePosition().name == clickedCenterPile) {
 					knockIsJustified = true;
 					break;
+				}
+			}
+		}
+
+		// Is move knockable because the AI played a card to the waste pile of the real player
+		// in a move before (last move) instead of playing it to a center pile?
+		// This situation is not captured by the regular mandatory moves because the card on the waste pile
+		// of the real player is now not within the allowed moves of the AI any more - a player
+		// can't pull cards from the waste pile of the opponent.
+		if (!knockIsJustified) {
+			const forgottenMandatoryWastePileMove = PlayboardUtils.getForgottenMandatoryWastePileMoveOfTheAi(this);
+			if (forgottenMandatoryWastePileMove) {
+				if (forgottenMandatoryWastePileMove.getTargetPilePosition().name == clickedCenterPile) {
+					knockIsJustified = true;
 				}
 			}
 		}
