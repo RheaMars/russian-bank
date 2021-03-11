@@ -328,7 +328,7 @@ export function getProbability(levelOfDifficulty, thresholdValue) {
 }
 
 /**
- * Check if the given intendedMove can be knocked justifiedly in the given playboard situation.
+ * Check if the given intendedMove can be knocked justifiably in the given playboard situation.
  * This method is used for the AI and for the real player to check if a knock is knockable.
  *
  * @param intendedMove the move the player intends to make
@@ -352,7 +352,7 @@ export function isMoveKnockable(intendedMove, game, considerStateOfReservePile) 
 		let isKnockable = false;
 		let mandatoryMoves = PlayboardUtils.getMandatoryMoves(game, considerStateOfReservePile);
 
-		// Move can't be knocked justifiedly if there are no mandatory moves:
+		// Move can't be knocked justifiably if there are no mandatory moves:
 		if(mandatoryMoves.length == 0) {
 			isKnockable = false;
 		}
