@@ -159,3 +159,11 @@ export function getStatisticsNumberOfGamesLost(level) {
 export function getStatisticsAverageDurationOfGame(level) {
 	return localStorage.getItem('zpStatisticsAverageDurationOfGameLevel' + level);
 }
+
+export function getShowAcesOnCenterPileSorted() {
+	return localStorage.getItem('zpAcesOnCenterPilesSorted');
+}
+
+export function updateShowAcesOnCenterPileSorted(isChecked) {
+	localStorage.setItem('zpAcesOnCenterPilesSorted', isChecked);
+}

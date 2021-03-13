@@ -51,5 +51,6 @@ export const i18n_de = {
     statisticsNumberOfGamesLost: "Verlorene Spiele",
     statisticsDurationOfGame: "Spieldauer",
     save: "Speichern",
-    saved: "Gespeichert"
+    saved: "Gespeichert",
+    orderAcesOnCenterPiles: "Sortierte Mittelstapel",
 };

@@ -116,6 +116,28 @@ export function setupLocalStorageFields(game) {
     $(document).on("change.localstorage", "#selectLanguage", function () {
         localStorageService.updateLanguage($(this).val());
     });
+
+    // Sort aces on center piles:
+    const showAcesOnCenterPilesSorted = localStorageService.getShowAcesOnCenterPileSorted();
+    if (showAcesOnCenterPilesSorted) {
+        if (showAcesOnCenterPilesSorted === "true") {
+            $("#checkboxOrderAcesOnCenterPiles").prop('checked', true);
+            game.setShowAcesOnCenterPilesSorted(true);
+            setBackgroundImagesToShowOnCenterPiles();
+        } else if (showAcesOnCenterPilesSorted === "false") {
+            $("#checkboxOrderAcesOnCenterPiles").prop('checked', false);
+            game.setShowAcesOnCenterPilesSorted(false);
+            removeBackgroundImagesToShowOnCenterPiles();
+        }
+    }
+    $(document).off("change.localstorage", "#checkboxOrderAcesOnCenterPiles");
+    $(document).on("change.localstorage", "#checkboxOrderAcesOnCenterPiles", function () {
+        if ($(this).is(':checked')) {
+            localStorageService.updateShowAcesOnCenterPileSorted(true);
+        } else {
+            localStorageService.updateShowAcesOnCenterPileSorted(false);
+        }
+    });
 }
 
 function setupTooltipsterTooltips() {
@@ -856,6 +878,39 @@ export function setGameEventHandlers(game) {
             $(".pilePanel").removeClass("highlightedOnDragStartForTutorialMode");
         }
     });
+
+    $(document).off("change.checkboxclick", "#checkboxOrderAcesOnCenterPiles");
+    $(document).on("change.checkboxclick", "#checkboxOrderAcesOnCenterPiles", function () {
+        if ($(this).is(':checked')) {
+            game.setShowAcesOnCenterPilesSorted(true);
+            setBackgroundImagesToShowOnCenterPiles();
+
+        } else {
+            game.setShowAcesOnCenterPilesSorted(false);
+            removeBackgroundImagesToShowOnCenterPiles();
+        }
+    });
+}
+
+export function setBackgroundImagesToShowOnCenterPiles() {
+
+    $(".aceOrderedOnCenterPile").remove();
+
+    for (let i = 1; i <= 4; i++) {
+        const directions = ['LEFT', 'RIGHT'];
+        directions.forEach(function(value) {
+            const centerPile = $("#CENTER_PILE_" + value + "_" + i);
+
+            centerPile.prepend("<span class='aceOrderedOnCenterPile'></span>")
+                .find(".aceOrderedOnCenterPile").css({
+                "background-image": "url(../img/cards_plain/" + i + ".svg" + ")"
+            });
+        });
+    }
+}
+
+export function removeBackgroundImagesToShowOnCenterPiles() {
+    $(".aceOrderedOnCenterPile").remove();
 }
 
 export function effectsOnPageLoad() {
@@ -928,6 +983,14 @@ export function enableLevelSelect() {
 
 export function disableLevelSelect() {
     $("select[name='selectDifficultyOfGame']").attr('disabled', true);
+}
+
+export function enableSortAcesOnCenterPilesChoice() {
+    $("input[id='checkboxOrderAcesOnCenterPiles']").attr('disabled', false);
+}
+
+export function disableSortAcesOnCenterPilesChoice() {
+    $("input[id='checkboxOrderAcesOnCenterPiles']").attr('disabled', true);
 }
 
 export function animateMove(game, moveToAnimate, wasKnockedByArtificialIntelligence, wasKnockedByIdentityPlayer, isDisallowedBackwardMove, forgottenMandatoryMoves, intendedMove) {

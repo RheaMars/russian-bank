@@ -3,7 +3,7 @@
 A solitaire card playing game for one player, based on the version available at [https://zankpatience.net](https://zankpatience.net).
 
 ## Prerequisites and Setup
-There are 2 ways to setup with different prerequisites, easiest way should be docker):
+There are 2 ways to setup with different prerequisites, easiest way should be docker:
 
 ### Docker
 - Install docker for your OS [Docker](https://www.docker.com/)

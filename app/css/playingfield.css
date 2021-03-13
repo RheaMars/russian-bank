@@ -1,5 +1,5 @@
 main {
-	min-height: 750px;
+	min-height: 800px;
 	flex: 1;
 	position: relative;
 	background: #E1F5A9;
@@ -11,13 +11,13 @@ main {
 
 @media (min-width: 525px) {
 	main {
-		min-height: 880px;
+		min-height: 920px;
 	}
 }
 
 @media (min-width: 770px) {
 	main {
-		min-height: 790px;
+		min-height: 820px;
 	}
 }
 
@@ -471,7 +471,7 @@ img.cardImg {
 	background-color: #337ab7 !important;
 }
 
-#labelTutorial {
+#labelTutorial, #labelOrderAcesOnCenterPiles {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -534,4 +534,12 @@ img.cardImg {
 
 .scrollXpopup .swal2-content {
 	overflow-x: auto;
+}
+
+.aceOrderedOnCenterPile {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	opacity: 0.15;
+	border: 1px solid black;
+	width: 100%;
 }

@@ -60,11 +60,17 @@ export class Game {
 
 		this._realPlayerMadeFirstMove = false;
 
+		this._showAcesOnCenterPilesSorted = false;
+		if ($("#checkboxOrderAcesOnCenterPiles").is(":checked")) {
+			this._showAcesOnCenterPilesSorted = true;
+		}
+
 		LocalStorageService.resetStatisticsPauseTimeInfo();
 		// Game should be treated as started only after the real player made his first move:
 		LocalStorageService.setGameStarted(0);
 
 		RenderService.enableLevelSelect();
+		RenderService.enableSortAcesOnCenterPilesChoice();
 		RenderService.setGameEventHandlers(this);
 		RenderService.renderPlayboard(this);
 		
@@ -79,6 +85,14 @@ export class Game {
 	
 	setTutorialMode(isTutorial) {
 		this._isTutorialMode = isTutorial;
+	}
+
+	getShowAcesOnCenterPilesSorted() {
+		return this._showAcesOnCenterPilesSorted;
+	}
+
+	setShowAcesOnCenterPilesSorted(bFlag) {
+		this._showAcesOnCenterPilesSorted = bFlag;
 	}
 
 	hasRealPlayerMadeFirstMove() {
@@ -183,12 +197,14 @@ export class Game {
 	onDropCardOnPile(idSourcePile, idTargetPile) {
 
 		// After the first card drop of the real player the duration of the game is measured and
-		// the level selection is disabled.
+		// the level selection and the checkbox to choose if aces should be shown on the
+		// center piles are disabled.
 		if (!this.hasRealPlayerMadeFirstMove())	{
 			let tsNow = Math.floor(new Date().getTime() / 1000);
 			this.setStartTime(tsNow);
 			LocalStorageService.setGameStarted(1);
 			RenderService.disableLevelSelect();
+			RenderService.disableSortAcesOnCenterPilesChoice();
 			this.setRealPlayerMadeFirstMove(true);
 		}
 
@@ -216,9 +232,7 @@ export class Game {
 			if (randomNumberForgetToKnock <= AiUtils.getProbability(this.getLevelOfDifficulty(), AiConfig.PROBABILITY_TO_KNOCK)) {
 				forgetToKnock = false;
 			}
-			
-			//forgetToKnock = false; //Just for testing...
-			
+
 			if (isMoveKnockableByArtificialIntelligence && !forgetToKnock) {
 				this.setKnockedState(true);
 			}
@@ -512,6 +526,7 @@ export class Game {
 			this.setStartTime(tsNow);
 			LocalStorageService.setGameStarted(1);
 			RenderService.disableLevelSelect();
+			RenderService.disableSortAcesOnCenterPilesChoice();
 			this.setRealPlayerMadeFirstMove(true);
 		}
 
@@ -584,6 +599,7 @@ export class Game {
 				RenderService.renderPlayboard(this);
 				RenderService.renderGameOverDialog(this);
 				RenderService.enableLevelSelect();
+				RenderService.enableSortAcesOnCenterPilesChoice();
 				
 			}
 			// If computer opponent won:
@@ -599,6 +615,7 @@ export class Game {
 				RenderService.renderPlayboard(this);
 				RenderService.renderGameOverDialog(this);
 				RenderService.enableLevelSelect();
+				RenderService.enableSortAcesOnCenterPilesChoice();
 			}
 		}
 	}

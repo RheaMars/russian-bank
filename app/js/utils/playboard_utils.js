@@ -4,6 +4,7 @@ import { Card2Pile } from '../entities/card2pile';
 import { CardNumber } from '../enums/cardinformation/cardnumber';
 import { Move } from '../entities/move';
 import { Player } from '../enums/player';
+import { Suit } from "../enums/cardinformation/suit";
 
 import * as PileUtils from './pile_utils';
 import * as CardUtils from './card_utils';
@@ -110,7 +111,7 @@ export function isMoveAllowed(game, move, considerStateOfReservePile) {
         return false;
     }
 
-    return isMoveAllowedBasedOnCard(playboard, move);
+    return isMoveAllowedBasedOnCard(playboard, move, game);
 }
 
 /**
@@ -172,7 +173,7 @@ function isMoveAllowedBasedOnPiles(player, sourcePile, targetPile) {
  * Checks if a move is allowed based on the card number, color and suit of the card which should be moved
  * from the source pile to the target pile of the move.
  */
-function isMoveAllowedBasedOnCard(playboard, move) {
+function isMoveAllowedBasedOnCard(playboard, move, game) {
 
     const sourcePile = playboard.getPlayboardMap().get(move.getSourcePilePosition());
     const targetPile = playboard.getPlayboardMap().get(move.getTargetPilePosition());
@@ -196,6 +197,9 @@ function isMoveAllowedBasedOnCard(playboard, move) {
             // Move card from house to center pile:
             case PileType.CENTER:
                 if (targetPile.getCard2PileElements().length == 0 && topCardOfSourcePile.getCardNumber() == CardNumber.ACE) {
+                    if (game.getShowAcesOnCenterPilesSorted()) {
+                        return isAceAllowedToBePlayedOnCenterPile(topCardOfSourcePile, targetPile);
+                    }
                     return true;
                 } else if (targetPile.getCard2PileElements().length > 0
                     && sourcePile.getCard2PileElements().length > 0
@@ -264,6 +268,9 @@ function isMoveAllowedBasedOnCard(playboard, move) {
             case PileType.CENTER:
                 // Move card from own reserve pile or from own waste pile to center pile:
                 if (targetPile.getCard2PileElements().length == 0 && topCardOfSourcePile.getCardNumber() == CardNumber.ACE) { // Will never happen for waste pile...
+                    if (game.getShowAcesOnCenterPilesSorted()) {
+                        return isAceAllowedToBePlayedOnCenterPile(topCardOfSourcePile, targetPile);
+                    }
                     return true;
                 } else if (targetPile.getCard2PileElements().length > 0
                     && sourcePile.getCard2PileElements().length > 0
@@ -287,6 +294,35 @@ function isMoveAllowedBasedOnCard(playboard, move) {
                 break;
         }
     }
+    return false;
+}
+
+function isAceAllowedToBePlayedOnCenterPile(aceCard, targetPile) {
+
+    if (aceCard.getCardNumber() != CardNumber.ACE) {
+        return false;
+    }
+
+    const suitOfAce = aceCard.getSuit();
+    const positionOfTargetPile = targetPile.getPosition().name;
+
+    if (suitOfAce === Suit.CLUBS && (positionOfTargetPile === "CENTER_PILE_LEFT_1"
+        || positionOfTargetPile === "CENTER_PILE_RIGHT_1")) {
+        return true;
+    }
+    else if (suitOfAce === Suit.SPADES && (positionOfTargetPile === "CENTER_PILE_LEFT_2"
+        || positionOfTargetPile === "CENTER_PILE_RIGHT_2")) {
+        return true;
+    }
+    else if (suitOfAce === Suit.HEARTS && (positionOfTargetPile === "CENTER_PILE_LEFT_3"
+        || positionOfTargetPile === "CENTER_PILE_RIGHT_3")) {
+        return true;
+    }
+    else if (suitOfAce === Suit.DIAMONDS && (positionOfTargetPile === "CENTER_PILE_LEFT_4"
+        || positionOfTargetPile === "CENTER_PILE_RIGHT_4")) {
+        return true;
+    }
+
     return false;
 }
 

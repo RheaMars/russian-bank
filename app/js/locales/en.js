@@ -49,5 +49,6 @@ export const i18n_en = {
     statisticsNumberOfGamesLost: "Games lost",
     statisticsDurationOfGame: "Duration",
     save: "Save",
-    saved: "Saved"
+    saved: "Saved",
+    orderAcesOnCenterPiles: "Sorted center piles",
 };
