@@ -50,9 +50,9 @@ export class Game {
 		this._winnerPlayer = null;
 		this._activePlayer = Player.PLAYER_A;
 		this._isInKnockedState = false;
-		
+
 		this._isTutorialMode = false;
-		if ($("#checkboxTutorial").is(":checked")) {
+		if (LocalStorageService.getTutorialMode()) {
 			this._isTutorialMode = true;
 		}
 		
@@ -61,7 +61,7 @@ export class Game {
 		this._realPlayerMadeFirstMove = false;
 
 		this._showAcesOnCenterPilesSorted = false;
-		if ($("#checkboxOrderAcesOnCenterPiles").is(":checked")) {
+		if (LocalStorageService.getShowAcesOnCenterPileSorted()) {
 			this._showAcesOnCenterPilesSorted = true;
 		}
 
