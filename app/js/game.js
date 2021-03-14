@@ -52,7 +52,7 @@ export class Game {
 		this._isInKnockedState = false;
 
 		this._isTutorialMode = false;
-		if (LocalStorageService.getTutorialMode()) {
+		if (LocalStorageService.getTutorialMode() === "true") {
 			this._isTutorialMode = true;
 		}
 		
@@ -61,7 +61,7 @@ export class Game {
 		this._realPlayerMadeFirstMove = false;
 
 		this._showAcesOnCenterPilesSorted = false;
-		if (LocalStorageService.getShowAcesOnCenterPileSorted()) {
+		if (LocalStorageService.getShowAcesOnCenterPileSorted() === "true") {
 			this._showAcesOnCenterPilesSorted = true;
 		}
 
