@@ -17,8 +17,6 @@ import * as AiService from "./services/ai_service";
 import * as TutorialService from "./services/tutorial_service";
 import * as LocalStorageService from "./services/localstorage_service";
 
-import $ from "jquery";
-
 export class Game {
 	
 	initializeGame() {
