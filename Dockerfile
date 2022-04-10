@@ -1,9 +1,9 @@
-FROM centos:latest
+FROM oraclelinux:8
 MAINTAINER theyellow
 
-RUN yum -y install httpd
-RUN yum -y install nodejs
-RUN yum -y install npm
+RUN dnf -y install httpd
+RUN dnf -y install nodejs
+RUN dnf -y install npm
 
 ADD . /var/www/html/
 
