@@ -30,7 +30,7 @@
     "i18next": "^4.2.0",
     "jquery": "^3.5.1",
     "jquery-i18next": "^1.2.0",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.2",
     "jquery-ui-touch-punch": "^0.2.3",
     "kute.js": "^1.5.98",
     "noty": "^2.4.0",
